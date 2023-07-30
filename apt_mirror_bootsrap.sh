@@ -57,15 +57,15 @@ prompt_user_input() {
 setup_local_repository() {
     log_message "Setting up the local Ubuntu apt repository mirror..."
 
-    # Step 4: Create repository directory
+    # Step 1: Create repository directory
     mkdir -p "$repo_dir"
 
-    # Step 5: Sync repository using rsync
+    # Step 2: Sync repository using rsync
     log_message "Syncing repository from the official Ubuntu mirror..."
     rsync -av --delete-after "rsync://archive.ubuntu.com/ubuntu/" "$repo_dir"
     log_message "Repository sync completed."
 
-    # Step 6: Update repository metadata
+    # Step 3: Update repository metadata
     log_message "Updating repository metadata..."
     apt-ftparchive packages "$repo_dir" > "$repo_dir/Packages"
     gzip -k -f "$repo_dir/Packages"
