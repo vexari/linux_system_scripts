@@ -1,1 +1,1 @@
-# linux_system_scripts
+# Linux scripts for system tasks automation
