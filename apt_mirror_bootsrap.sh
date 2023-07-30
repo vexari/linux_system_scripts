@@ -32,23 +32,16 @@ install_packages() {
 prompt_user_input() {
     read -rp "Enter the desired Ubuntu release [focal]: " ubuntu_release
     ubuntu_release=${ubuntu_release:-"focal"}
-
     read -rp "Enter the web server root directory [/var/www/html]: " repo_dir
     repo_dir=${repo_dir:-"/var/www/html"}
-
     read -rp "Enter your domain name for HTTPS (e.g., your_domain.com): " domain_name
     [[ -z $domain_name ]] && { log_message "Domain name cannot be empty."; exit 1; }
-
     read -rp "Enter a list of allowed IP addresses (comma-separated) for SSH (optional - leave empty for any): " allowed_ips
-
     read -rp "Enter your username for SSH access: " ssh_username
     [[ -z $ssh_username ]] && { log_message "SSH username cannot be empty."; exit 1; }
-
     read -rp "Enter your group name for SSH access (optional - leave empty to skip): " ssh_groupname
-
     read -rp "Do you want to change the default SSH port? [y/N]: " change_ssh_port
     change_ssh_port=${change_ssh_port:-"N"}
-
     read -rp "Do you want to restrict su access to members of the wheel group? [y/N]: " restrict_su_access
     restrict_su_access=${restrict_su_access:-"N"}
 }
